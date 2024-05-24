@@ -16,7 +16,9 @@ print("Ya")
 
 while True:
     # ANTES DE AÑADIR UN NUEMRO, HAY AÑADIR LA TECLA VIRTUAL EN LA LINEA 5
-
+    # Comprobador de archivo, si hay un archivo llamado "Hello World":
+                    # Mandar mensaje a whatsappy
+                    # device.destroy()
     
     # Simular pulsaciones de teclas
     device.emit(uinput.KEY_ENTER, 1)  # Presionar la tecla Enter
