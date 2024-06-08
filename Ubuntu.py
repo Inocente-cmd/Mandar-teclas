@@ -1,5 +1,6 @@
 import uinput
 import time
+import os
 
 # Crear un dispositivo de entrada virtual
 device = uinput.Device([
@@ -16,11 +17,7 @@ print("Ya")
 
 while True:
     # ANTES DE AÑADIR UN NUEMRO, HAY AÑADIR LA TECLA VIRTUAL EN LA LINEA 5
-    # Comprobador de archivo, si hay un archivo llamado "Hello World":
-                    # Mandar mensaje a whatsappy
-                    # device.destroy()
-    
-    # Simular pulsaciones de teclas
+
     device.emit(uinput.KEY_ENTER, 1)  # Presionar la tecla Enter
     device.emit(uinput.KEY_ENTER, 0)  # Soltar la tecla Enter
     print("Enter")
@@ -57,6 +54,33 @@ while True:
     print("Esperando...")
     time.sleep(105) # añadir 15s mas del tiempo original
     print("Ya paso el tiempo")
+    print("Verificacion...")
 
-# Liberar el dispositivo
-device.destroy()
+    ubicacion = '/root'
+    archivo = "home"
+    os.chdir(ubicacion)
+
+    ruta_actual = os.getcwd()
+    #print("La ruta actual es:", ruta_actual)  ###
+
+    if os.path.exists(ubicacion):
+        print("Accedio a la carpeta")
+
+    #print("Archivos y directorios en la ubicación actual:")
+    #print(os.listdir())                     ###
+    elementos = os.listdir() 
+
+    archivo_hand = None
+    for elementos in elementos:
+        if archivo in elementos:
+            archivo_hand = elementos
+            break
+
+    if archivo_hand:
+        print("Se encontro un archivo llamado '",archivo_hand,"'")
+        device.destroy() # Deterner el programa
+    else:
+        print(f"No se encontró ningún archivo")
+
+
+
